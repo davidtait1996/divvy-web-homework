@@ -10,7 +10,7 @@ defmodule Homework.Transactions.Transaction do
     field(:credit, :boolean, default: false)
     field(:debit, :boolean, default: false)
     field(:description, :string)
-    field(:company_id, :integer)
+    field(:company_id, :id)
 
     belongs_to(:merchant, Merchant, type: :binary_id, foreign_key: :merchant_id)
     belongs_to(:user, User, type: :binary_id, foreign_key: :user_id)
