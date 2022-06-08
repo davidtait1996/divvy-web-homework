@@ -18,10 +18,11 @@
   alias Homework.Companies
   alias Homework.Transactions
 
-  Repo.delete_all Merchants.Merchant
-  Repo.delete_all Users.User
-  Repo.delete_all Companies.Company
   Repo.delete_all Transactions.Transaction
+  Repo.delete_all Users.User
+  Repo.delete_all Merchants.Merchant
+  Repo.delete_all Companies.Company
+  
 
   merchant1 = Merchants.create_merchant(%{description: Faker.Company.bs(), name: Faker.Company.name()}) |> elem(1);
   merchant2 = Merchants.create_merchant(%{description: Faker.Company.bs(), name: Faker.Company.name()}) |> elem(1);
