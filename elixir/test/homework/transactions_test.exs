@@ -5,6 +5,7 @@ defmodule Homework.TransactionsTest do
   alias Homework.Merchants
   alias Homework.Transactions
   alias Homework.Users
+  alias Homework.Companies
 
   describe "transactions" do
     alias Homework.Transactions.Transaction
@@ -19,18 +20,26 @@ defmodule Homework.TransactionsTest do
           name: "some updated name"
         })
 
+      {:ok, company1} =
+        Companies.create_company(%{
+          name: "some name",
+          credit_line: 1000
+        })
+
       {:ok, user1} =
         Users.create_user(%{
           dob: "some dob",
           first_name: "some first_name",
-          last_name: "some last_name"
+          last_name: "some last_name",
+          company_id: company1.id
         })
 
       {:ok, user2} =
         Users.create_user(%{
           dob: "some updated dob",
           first_name: "some updated first_name",
-          last_name: "some updated last_name"
+          last_name: "some updated last_name",
+          company_id: company1.id
         })
 
       valid_attrs = %{
